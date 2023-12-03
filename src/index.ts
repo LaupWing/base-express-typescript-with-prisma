@@ -5,22 +5,23 @@ import puppeteer from "puppeteer"
 const app = express()
 
 app.set("view engine", "ejs")
-   .set("views", path.join(__dirname, "views"))
+   .set("views", path.join(process.cwd(), "views"))
    .get("/", async (req, res) => {
       const browser = await puppeteer.launch()
+      console.log(path.join(__dirname, "views"))
       const page = await browser.newPage()
       const renderedHTML = res.render("index", {
          title: "Hello, OpenGraph Image!"
       })
+      res.send(renderedHTML)
+      // // Set the HTML content on the page
+      // await page.setContent(renderedHTML!, { waitUntil: "domcontentloaded" })
 
-      // Set the HTML content on the page
-      await page.setContent(renderedHTML!, { waitUntil: "domcontentloaded" })
+      // // Capture a screenshot of the rendered content
+      // const screenshot = await page.screenshot()
 
-      // Capture a screenshot of the rendered content
-      const screenshot = await page.screenshot()
-
-      // Send the image as the response
-      res.type("image/png").send(screenshot)
+      // // Send the image as the response
+      // res.type("image/png").send(screenshot)
 
       // Close the browser
       await browser.close()
