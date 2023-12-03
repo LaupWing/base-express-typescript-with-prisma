@@ -1,4 +1,7 @@
+import "react"
 import express from "express"
+import ReactDOMServer from "react-dom/server"
+
 
 const app = express()
 const port = 3000
