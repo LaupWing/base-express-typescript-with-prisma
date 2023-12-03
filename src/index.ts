@@ -31,7 +31,6 @@ app.set("view engine", "ejs")
       // res.send('test')
       // Set the HTML content on the page
       // res.send("hi")
-      await page.addStyleTag({url: 'http://localhost:3000/dist/output.css'})
       await page.setContent(renderedHTML as string, { waitUntil: "domcontentloaded" })
 
       // // Capture a screenshot of the rendered content
