@@ -39,7 +39,7 @@ app.set("view engine", "ejs")
       // Send the image as the response
       res.type("image/png").send(screenshot)
 
-      // await browser.close()
+      await browser.close()
    })
 
 app.listen(3000, () => console.log("Server is running on port 3000"))
