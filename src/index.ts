@@ -9,14 +9,14 @@ app
    .use(express.static(path.join(process.cwd(), "public")))
    .set("views", path.join(process.cwd(), "views"))
    .get("/", async (req, res) => {
-      // const browser = await puppeteer.launch()
-      // console.log(path.join(__dirname, "views"))
-      // const page = await browser.newPage()
+      const browser = await puppeteer.launch()
+      console.log(path.join(__dirname, "views"))
+      const page = await browser.newPage()
       return res.render("index", {
          title: "Hello, OpenGraph Image!"
       })
       // console.log(renderedHTML)
-      // res.send('test')
+      // // res.send('test')
       // // Set the HTML content on the page
       // await page.setContent(renderedHTML!, { waitUntil: "domcontentloaded" })
 
@@ -26,7 +26,6 @@ app
       // // Send the image as the response
       // res.type("image/png").send(screenshot)
 
-      // Close the browser
       // await browser.close()
    })
 
